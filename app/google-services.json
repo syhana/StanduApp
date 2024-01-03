@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "729904135579",
+    "project_id": "aplikasi-standu",
+    "storage_bucket": "aplikasi-standu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729904135579:android:554030b2e7f949914cf53e",
+        "android_client_info": {
+          "package_name": "com.example.standu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPKAutcYlNuoQ9WOBQx40tXtm6eVi2p7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

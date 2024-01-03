@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Home">
+
+    <ImageView
+        android:id="@+id/logo_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:src="@drawable/logo_with_text"/>
+
+
+    <ImageButton
+        android:id="@+id/menu1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#00FFFFFF"
+        android:clickable="true"
+        android:contentDescription="@string/menu1_diaryku"
+        android:padding="16dp"
+        android:src="@drawable/menu1_diaryku" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/menu2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="@string/menu2_informasi_stunting"
+            android:src="@drawable/menu2_informasi_stunting"
+        />
+
+        <ImageButton
+            android:id="@+id/menu3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="@string/menu3_nutrisi_anak"
+            android:src="@drawable/menu3_nutrisi_anak"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/menu4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="@string/menu4_imunisasi_anak"
+            android:src="@drawable/menu4_imunisasi_anak"
+            />
+
+        <ImageButton
+            android:id="@+id/menu5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="@string/menu5_pengaturan_akun"
+            android:src="@drawable/menu5_pengaturan_akun"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Standu</string>
+    <string name="standu">STANDU</string>
+    <string name="standu_decs">Aplikasi edukasi stunting untuk \npara Bunda</string>
+
+    //image decs
+    <string name="background_welcome">background_welcome</string>
+    <string name="logo_putih">logo_putih</string>
+    <string name="logo_pink">logo_pink</string>
+
+    //halaman welcome
+    <string name="selamat_datang">SELAMAT DATANG!</string>
+
+    //halaman masuk dan daftar
+    <string name="form_daftar_text">Formulir Pendaftaran</string>
+    <string name="masuk_text">Selamat Datang \nBunda!</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="pertanyaan_daftar">Belum memiliki akun? </string>
+    <string name="daftar">Daftar</string>
+    <string name="pertanyaan_masuk">Sudah memiliki akun? </string>
+    <string name="masuk">Masuk</string>
+
+
+    //button
+    <string name="button_daftar">Daftar</string>
+    <string name="button_masuk">Masuk</string>
+    <string name="button_sudah">Sudah</string>
+    <string name="button_belum">Belum</string>
+    <string name="button_lihat">Lihat</string>
+    <string name="button_ubah">Ubah</string>
+    <string name="button_keluar">Keluar</string>
+    <string name="button_back">Back</string>
+    <string name="button_tambah">Tambah</string>
+    <string name="button_simpan">Simpan</string>
+
+    //menu
+    <string name="menu1_diaryku">menu1 : diaryku</string>
+    <string name="menu2_informasi_stunting">menu2 : informasi stunting</string>
+    <string name="menu3_nutrisi_anak">menu3 : nutrisi anak</string>
+    <string name="menu4_imunisasi_anak">menu4 : imunisasi anak</string>
+    <string name="menu5_pengaturan_akun">menu5 : pengaturan akun</string>
+
+    //diaryku
+    <string name="judul_diary">DIARYKU</string>
+    <string name="judul_diary_tambah">TAMBAH DIARYKU</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="up_tanggal">Masukkan tanggal</string>
+    <string name="judul">Judul</string>
+    <string name="up_judul">Masukkan judul</string>
+    <string name="catatan">Catatan</string>
+    <string name="up_catatan">Masukkan catatan</string>
+</resources>
