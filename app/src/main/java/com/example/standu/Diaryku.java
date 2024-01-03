@@ -1,5 +1,6 @@
 package com.example.standu;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,11 +44,8 @@ public class Diaryku extends AppCompatActivity {
         button_back = findViewById(R.id.button_back_green);
         button_tambah = findViewById(R.id.diaryku_button_tambah);
 
-        button_back.setOnClickListener(v -> {
-            Intent intent = new Intent(Diaryku.this, Home.class);
-            startActivity(intent);
-        });
-        button_tambah.setOnClickListener(v -> {
+        button_back.setOnClickListener(view -> onBackPressed());
+        button_tambah.setOnClickListener(view -> {
             Intent intent = new Intent(Diaryku.this, Diaryku_tambah.class);
             startActivity(intent);
         });
@@ -85,6 +82,38 @@ public class Diaryku extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
+        adapter.setOnItemClickListener(new Diaryku_adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                openDiaryDetail(diaryList.get(position).getDiaryId());
+            }
+        });
 
+
+    }
+
+    private void openDiaryDetail(String diaryId) {
+        DatabaseReference diaryDetailRef = diaryRef.child(diaryId);
+        diaryDetailRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Diaryku_model diary = snapshot.getValue(Diaryku_model.class);
+                    if (diary != null) {
+                        Intent intent = new Intent(Diaryku.this, Diaryku_detail.class);
+                        intent.putExtra("diaryId", diary.getDiaryId());
+                        intent.putExtra("title", diary.getTitle());
+                        intent.putExtra("content", diary.getContent());
+                        intent.putExtra("date", diary.getDate());
+                        startActivity(intent);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
+            }
+        });
     }
 }

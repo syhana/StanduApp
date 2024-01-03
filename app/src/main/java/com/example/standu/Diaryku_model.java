@@ -1,7 +1,7 @@
 package com.example.standu;
 
 public class Diaryku_model {
-    private String id;
+    private String diaryId;
     private String title;
     private String content;
     private String date;
@@ -10,15 +10,15 @@ public class Diaryku_model {
     public Diaryku_model() {
     }
 
-    public Diaryku_model(String id, String title, String content, String date) {
-        this.id = id;
+    public Diaryku_model(String diaryId, String title, String content, String date) {
+        this.diaryId = diaryId;
         this.title = title;
         this.content = content;
         this.date = date;
     }
 
-    public String getId() {
-        return id;
+    public String getDiaryId() {
+        return diaryId;
     }
 
     public String getTitle() {

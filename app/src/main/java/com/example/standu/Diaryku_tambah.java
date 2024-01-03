@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +18,9 @@ import java.util.Calendar;
 
 public class Diaryku_tambah extends AppCompatActivity {
 
-    private EditText editTitle, editContent, editDate;
-    private Button btnSave;
+    private EditText titleTambah, contentTambah, dateTambah;
+    private Button button_simpan;
+    private ImageButton button_back;
     private DatabaseReference diaryRef;
 
     @Override
@@ -34,13 +36,15 @@ public class Diaryku_tambah extends AppCompatActivity {
         String uid = SessionManager.getUserDetails(this).uid;
         diaryRef = FirebaseDatabase.getInstance().getReference("diaries").child(uid);
 
-        editTitle = findViewById(R.id.tambah_judul);
-        editContent = findViewById(R.id.tambah_catatan);
-        editDate = findViewById(R.id.tambah_tanggal);
-        btnSave = findViewById(R.id.button_simpan);
+        titleTambah = findViewById(R.id.tambah_judul);
+        contentTambah = findViewById(R.id.tambah_catatan);
+        dateTambah = findViewById(R.id.tambah_tanggal);
+        button_simpan = findViewById(R.id.button_simpan);
+        button_back = findViewById(R.id.button_back_green);
 
-        editDate.setOnClickListener(view -> showDatePickerDialog());
-        btnSave.setOnClickListener(view -> saveDiary());
+        dateTambah.setOnClickListener(view -> showDatePickerDialog());
+        button_simpan.setOnClickListener(view -> saveDiary());
+        button_back.setOnClickListener(view -> onBackPressed());
     }
 
     private void showDatePickerDialog() {
@@ -54,7 +58,7 @@ public class Diaryku_tambah extends AppCompatActivity {
                 this,
                 (DatePicker view, int year, int month, int dayOfMonth) -> {
                     String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
-                    editDate.setText(selectedDate);
+                    dateTambah.setText(selectedDate);
                 },
                 defaultYear,
                 defaultMonth,
@@ -64,9 +68,9 @@ public class Diaryku_tambah extends AppCompatActivity {
     }
 
     private void saveDiary() {
-        String title = editTitle.getText().toString().trim();
-        String content = editContent.getText().toString().trim();
-        String date = editDate.getText().toString().trim();
+        String title = titleTambah.getText().toString().trim();
+        String content = contentTambah.getText().toString().trim();
+        String date = dateTambah.getText().toString().trim();
 
         if (TextUtils.isEmpty(title) || TextUtils.isEmpty(content)) {
             Toast.makeText(this, "Harap isi judul dan catatan", Toast.LENGTH_SHORT).show();

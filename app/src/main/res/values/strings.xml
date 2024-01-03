@@ -35,6 +35,8 @@
     <string name="button_back">Back</string>
     <string name="button_tambah">Tambah</string>
     <string name="button_simpan">Simpan</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_hapus">Hapus</string>
 
     //menu
     <string name="menu1_diaryku">menu1 : diaryku</string>
@@ -46,6 +48,7 @@
     //diaryku
     <string name="judul_diary">DIARYKU</string>
     <string name="judul_diary_tambah">TAMBAH DIARYKU</string>
+    <string name="judul_diary_detail">DETAIL DIARYKU</string>
     <string name="tanggal">Tanggal</string>
     <string name="up_tanggal">Masukkan tanggal</string>
     <string name="judul">Judul</string>

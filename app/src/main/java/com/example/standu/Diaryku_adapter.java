@@ -13,12 +13,20 @@ public class Diaryku_adapter extends RecyclerView.Adapter<Diaryku_adapter.Diaryk
 
     private List<Diaryku_model> diaries;
     private Context context;
+    private OnItemClickListener onItemClickListener;
 
     public Diaryku_adapter(List<Diaryku_model> diaries, Context context) {
         this.diaries = diaries;
         this.context = context;
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
     @NonNull
     @Override
     public DiarykuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,9 +42,9 @@ public class Diaryku_adapter extends RecyclerView.Adapter<Diaryku_adapter.Diaryk
         holder.textDate.setText(diary.getDate());
         holder.textContent.setText(diary.getContent());
 
-//        holder.itemView.setOnClickListener(view ->
-//                openDiaryDetails(diary.getId())
-//        );
+        holder.itemView.setOnClickListener(view ->
+                openDiaryDetails(diary.getDiaryId())
+        );
     }
 
     @Override
@@ -55,9 +63,41 @@ public class Diaryku_adapter extends RecyclerView.Adapter<Diaryku_adapter.Diaryk
         }
     }
 
-//    private void openDiaryDetails(String diaryId) {
-//        Intent intent = new Intent(context, Diaryku_detail.class);
-//        intent.putExtra("diaryId", diaryId);
-//        context.startActivity(intent);
-//    }
+    private void openDiaryDetails(String diaryId) {
+        Intent intent = new Intent(context, Diaryku_detail.class);
+        intent.putExtra("diaryId", diaryId);
+        intent.putExtra("title", getTitleByDiaryId(diaryId));
+        intent.putExtra("content", getContentByDiaryId(diaryId));
+        intent.putExtra("date", getDateByDiaryId(diaryId));
+        context.startActivity(intent);
+    }
+
+    // Helper methods to get title, content, and date by diaryId
+    private String getTitleByDiaryId(String diaryId) {
+        for (Diaryku_model diary : diaries) {
+            if (diary.getDiaryId().equals(diaryId)) {
+                return diary.getTitle();
+            }
+        }
+        return ""; // or null, depending on your preference
+    }
+
+    private String getContentByDiaryId(String diaryId) {
+        for (Diaryku_model diary : diaries) {
+            if (diary.getDiaryId().equals(diaryId)) {
+                return diary.getContent();
+            }
+        }
+        return ""; // or null, depending on your preference
+    }
+
+    private String getDateByDiaryId(String diaryId) {
+        for (Diaryku_model diary : diaries) {
+            if (diary.getDiaryId().equals(diaryId)) {
+                return diary.getDate();
+            }
+        }
+        return ""; // or null, depending on your preference
+    }
+
 }
