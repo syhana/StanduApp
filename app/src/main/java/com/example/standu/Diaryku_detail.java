@@ -25,7 +25,12 @@ public class Diaryku_detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diaryku_detail);
+        if(SessionManager.isUserLoggedIn(this)){
+            setContentView(R.layout.activity_diaryku_detail);
+        }else{
+            startActivity(new Intent(Diaryku_detail.this, MainActivity.class));
+            finish();
+        }
 
         titleLihat = findViewById(R.id.lihat_judul);
         contentLihat = findViewById(R.id.lihat_catatan);
@@ -45,12 +50,12 @@ public class Diaryku_detail extends AppCompatActivity {
         button_back = findViewById(R.id.button_back_green);
 
         diaryRef = FirebaseDatabase.getInstance().getReference("diaries")
-                .child(SessionManager.getUserDetails(this).uid)
-                .child(diaryId);
+                .child(SessionManager.getUserDetails(this).userId)
+                .child(date).child(diaryId);
 
         button_edit.setOnClickListener(view -> openDiaryEdit(diaryId, title, content, date));
         button_hapus.setOnClickListener(view -> showDeleteConfirmation());
-        button_back.setOnClickListener(view -> onBackPressed());
+        button_back.setOnClickListener(view -> startActivity(new Intent(Diaryku_detail.this, Diaryku.class)));
     }
     private void openDiaryEdit(String diaryId, String title, String content, String date) {
         Intent intent = new Intent(Diaryku_detail.this, Diaryku_edit.class);
@@ -71,6 +76,7 @@ public class Diaryku_detail extends AppCompatActivity {
                 // Hapus data dari database
                 diaryRef.removeValue();
                 Toast.makeText(Diaryku_detail.this, "Catatan dihapus", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Diaryku_detail.this, Diaryku.class));
                 finish();
             }
         });

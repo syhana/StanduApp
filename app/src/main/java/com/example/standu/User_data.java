@@ -1,7 +1,15 @@
 package com.example.standu;
 
 public class User_data {
-    String nama, user, mail, pass;
+    String userId, nama, user, mail, pass;
+
+    public String getuserId() {
+        return userId;
+    }
+
+    public void setuserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getNama() {
         return nama;
@@ -35,7 +43,8 @@ public class User_data {
         this.pass = pass;
     }
 
-    public User_data(String nama, String user, String mail, String pass) {
+    public User_data(String userId, String nama, String user, String mail, String pass) {
+        this.userId = userId;
         this.nama = nama;
         this.user = user;
         this.mail = mail;

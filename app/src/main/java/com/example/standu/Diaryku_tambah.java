@@ -12,8 +12,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseError;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class Diaryku_tambah extends AppCompatActivity {
@@ -33,7 +41,7 @@ public class Diaryku_tambah extends AppCompatActivity {
             finish();
         }
 
-        String uid = SessionManager.getUserDetails(this).uid;
+        String uid = SessionManager.getUserDetails(this).userId;
         diaryRef = FirebaseDatabase.getInstance().getReference("diaries").child(uid);
 
         titleTambah = findViewById(R.id.tambah_judul);
@@ -57,7 +65,8 @@ public class Diaryku_tambah extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
                 (DatePicker view, int year, int month, int dayOfMonth) -> {
-                    String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                    // Mengonversi format tanggal
+                    String selectedDate = convertDateFormat(dayOfMonth + "/" + (month + 1) + "/" + year);
                     dateTambah.setText(selectedDate);
                 },
                 defaultYear,
@@ -66,6 +75,21 @@ public class Diaryku_tambah extends AppCompatActivity {
 
         datePickerDialog.show();
     }
+
+    // Metode untuk mengonversi format tanggal
+    private String convertDateFormat(String inputDate) {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            Date date = inputFormat.parse(inputDate);
+
+            SimpleDateFormat outputFormat = new SimpleDateFormat("d MMMM yyyy", Locale.getDefault());
+            return outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return inputDate; // Jika konversi gagal, kembalikan inputDate tanpa perubahan
+        }
+    }
+
 
     private void saveDiary() {
         String title = titleTambah.getText().toString().trim();
@@ -77,12 +101,29 @@ public class Diaryku_tambah extends AppCompatActivity {
             return;
         }
 
-        String diaryId = diaryRef.push().getKey();
-        Diaryku_model diary = new Diaryku_model(diaryId, title, content, date);
-        diaryRef.child(diaryId).setValue(diary);
+        DatabaseReference dateChildRef = diaryRef.child(date);
+        dateChildRef.orderByChild("title").equalTo(title).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Judul sudah ada, berikan pesan kesalahan
+                    Toast.makeText(Diaryku_tambah.this, "Judul sudah digunakan, pilih judul lain", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Judul belum ada, simpan diary baru di dalam tanggal tersebut
+                    String diaryId = dateChildRef.push().getKey();
+                    Diaryku_model diary = new Diaryku_model(diaryId, title, content, date);
+                    dateChildRef.child(diaryId).setValue(diary);
 
-        Toast.makeText(this, "Catatan harian berhasil disimpan", Toast.LENGTH_SHORT).show();
-        finish();
+                    Toast.makeText(Diaryku_tambah.this, "Catatan harian berhasil disimpan", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle error
+            }
+        });
     }
 }
 

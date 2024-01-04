@@ -44,14 +44,13 @@ public class Diaryku extends AppCompatActivity {
         button_back = findViewById(R.id.button_back_green);
         button_tambah = findViewById(R.id.diaryku_button_tambah);
 
-        button_back.setOnClickListener(view -> onBackPressed());
+        button_back.setOnClickListener(view -> startActivity(new Intent(Diaryku.this, Home.class)));
         button_tambah.setOnClickListener(view -> {
-            Intent intent = new Intent(Diaryku.this, Diaryku_tambah.class);
-            startActivity(intent);
+            startActivity(new Intent(Diaryku.this, Diaryku_tambah.class));
         });
 
-        String uid = SessionManager.getUserDetails(this).uid;
-        diaryRef = FirebaseDatabase.getInstance().getReference("diaries").child(uid);
+        String userId = SessionManager.getUserDetails(this).userId;
+        diaryRef = FirebaseDatabase.getInstance().getReference("diaries").child(userId);
 
         recyclerView = findViewById(R.id.recycler_view_diary);
         diaryList = new ArrayList<>();
@@ -62,11 +61,12 @@ public class Diaryku extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 diaryList.clear();
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Diaryku_model diary = snapshot.getValue(Diaryku_model.class);
-                    diaryList.add(diary);
+                for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot diarySnapshot : dateSnapshot.getChildren()) {
+                        Diaryku_model diary = diarySnapshot.getValue(Diaryku_model.class);
+                        diaryList.add(diary);
+                    }
                 }
-
 
                 Collections.reverse(diaryList);
                 adapter.notifyDataSetChanged();
