@@ -12,7 +12,6 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button button_daftar, button_masuk;
-    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

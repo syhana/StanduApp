@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -47,17 +49,28 @@ public class Masuk extends AppCompatActivity {
             button_masuk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(!validateEmail()| !validatePassword()){
+                    if(isInternetAvailable()){
+                        if(!validateEmail()| !validatePassword()){
 
-                    }else {
-                        checkUser();
+                        }else {
+                            checkUser();
+                        }
+                    }else{
+                        Toast.makeText(Masuk.this, "Tidak ada koneksi internet. Silahkan cek koneksi Anda", Toast.LENGTH_SHORT).show();
                     }
+
                 }
             });
 
             redirect_daftar.setOnClickListener(view ->
                     startActivity(new Intent(Masuk.this, Daftar.class)));
         }
+    }
+
+    private boolean isInternetAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     private void masukKeHome() {

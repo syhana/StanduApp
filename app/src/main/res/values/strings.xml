@@ -2,6 +2,7 @@
     <string name="app_name">Standu</string>
     <string name="standu">STANDU</string>
     <string name="standu_decs">Aplikasi edukasi stunting untuk \npara Bunda</string>
+    <string name="google_map_key">AIzaSyA-tHF-zfOXj9A5CPi22mV5f_dirrq8dUM</string>
 
     //image decs
     <string name="background_welcome">background_welcome</string>
@@ -30,6 +31,7 @@
     <string name="button_sudah">Sudah</string>
     <string name="button_belum">Belum</string>
     <string name="button_lihat">Lihat</string>
+    <string name="button_lihat_maps">Lihat Puskesmas/RS</string>
     <string name="button_ubah">Ubah</string>
     <string name="button_keluar">Keluar</string>
     <string name="button_back">Back</string>
@@ -55,4 +57,38 @@
     <string name="up_judul">Masukkan judul</string>
     <string name="catatan">Catatan</string>
     <string name="up_catatan">Masukkan catatan</string>
+
+    //imunisasi
+    <string name="judul_imunisasi">IMUNISASI ANAK</string>
+    <string name="judul_imunisasi_tambah">TAMBAH DATA ANAK</string>
+    <string name="judul_imunisasi_edit">EDIT DATA ANAK</string>
+    <string name="data_anak">Data Anak</string>
+    <string name="nama_anak">Nama Anak</string>
+    <string name="up_nama_anak">Masukkan nama anak</string>
+    <string name="umur_anak">Umur Anak</string>
+    <string name="up_umur_anak">Masukkan umur anak</string>
+    <string name="jk_anak">Jenis Kelamin Anak</string>
+    <string name="up_jk_anak">Pilih jenis kelamin anak</string>
+    <string name="bb_anak">Berat Badan Anak</string>
+    <string name="up_bb_anak">Masukkan berat badan anak</string>
+    <string name="tb_anak">Tinggi Badan Anak</string>
+    <string name="up_tb_anak">Masukkan tinggi badan anak</string>
+    <string name="judul_imunisasi_detail">DETAIL DATA ANAK</string>
+    <string name="ajakan_imunisasi">Mau pergi imunisasi?</string>
+    <string name="link_map">Klik Untuk Lihat Puskesmas/RS Terdekat</string>
+    <string name="history_imunisasi">History Imunisasi</string>
+    <string name="imunisasi_maps_cari">Cari</string>
+    <string name="nama_imunisasi">Nama Imunisasi</string>
+    <string name="button_update_status">Update Status</string>
+    <string name="usia_ideal">Usia Ideal</string>
+    <string name="status">Status</string>
+    <string name="button_tambah_history">Tambah History</string>
+    <string name="judul_tambah_history_imunisasi">TAMBAH HISTORY IMUNISASI</string>
+    <string name="up_nama_imunisasi">Masukkan nama imunisasi</string>
+
+
+
+    <string name="judul_edit_diaryku">EDIT DIARYKU</string>
+    <string name="selengkapnya">selengkapnya</string>
+
 </resources>

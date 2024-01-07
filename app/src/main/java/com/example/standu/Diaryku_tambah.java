@@ -56,7 +56,6 @@ public class Diaryku_tambah extends AppCompatActivity {
     }
 
     private void showDatePickerDialog() {
-        // Mendapatkan tanggal hari ini
         Calendar calendar = Calendar.getInstance();
         int defaultYear = calendar.get(Calendar.YEAR);
         int defaultMonth = calendar.get(Calendar.MONTH);
@@ -65,7 +64,6 @@ public class Diaryku_tambah extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
                 (DatePicker view, int year, int month, int dayOfMonth) -> {
-                    // Mengonversi format tanggal
                     String selectedDate = convertDateFormat(dayOfMonth + "/" + (month + 1) + "/" + year);
                     dateTambah.setText(selectedDate);
                 },
@@ -76,7 +74,6 @@ public class Diaryku_tambah extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    // Metode untuk mengonversi format tanggal
     private String convertDateFormat(String inputDate) {
         try {
             SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -86,7 +83,7 @@ public class Diaryku_tambah extends AppCompatActivity {
             return outputFormat.format(date);
         } catch (ParseException e) {
             e.printStackTrace();
-            return inputDate; // Jika konversi gagal, kembalikan inputDate tanpa perubahan
+            return inputDate;
         }
     }
 
@@ -106,10 +103,8 @@ public class Diaryku_tambah extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    // Judul sudah ada, berikan pesan kesalahan
                     Toast.makeText(Diaryku_tambah.this, "Judul sudah digunakan, pilih judul lain", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Judul belum ada, simpan diary baru di dalam tanggal tersebut
                     String diaryId = dateChildRef.push().getKey();
                     Diaryku_model diary = new Diaryku_model(diaryId, title, content, date);
                     dateChildRef.child(diaryId).setValue(diary);
@@ -121,7 +116,6 @@ public class Diaryku_tambah extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle error
             }
         });
     }

@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Imunisasi_edit">
 
     <TableRow
-        android:id="@+id/diaryku"
+        android:id="@+id/imunisasi"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/pale_green"
+        android:background="@color/light_pink"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,26 +19,26 @@
         <TextView
             android:fontFamily="@font/poppins_extrabold"
             android:gravity="center"
-            android:text="@string/judul_diary_detail"
+            android:text="@string/judul_imunisasi_edit"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
     </TableRow>
 
     <ImageButton
-        android:id="@+id/button_back_green"
+        android:id="@+id/button_back_pink"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#FBFBFB"
         android:contentDescription="@string/button_back"
-        android:src="@drawable/back_green"
+        android:src="@drawable/back_pink"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diaryku" />
+        app:layout_constraintTop_toBottomOf="@+id/imunisasi" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -46,20 +47,21 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_back_green">
+        app:layout_constraintTop_toBottomOf="@+id/button_back_pink">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_extrabold"
-            android:text="@string/tanggal"
+            android:text="@string/nama_anak"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/lihat_tanggal"
+            android:id="@+id/edit_namaAnak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
+            android:hint="@string/up_nama_anak"
             android:textSize="16sp" />
 
         <TextView
@@ -67,15 +69,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/poppins_extrabold"
-            android:text="@string/judul"
+            android:text="@string/umur_anak"
             android:textSize="16sp" />
 
 
-        <TextView
-            android:id="@+id/lihat_judul"
+        <EditText
+            android:id="@+id/edit_umurAnak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
+            android:hint="@string/up_umur_anak"
+            android:inputType="numberDecimal"
             android:textSize="16sp" />
 
         <TextView
@@ -83,56 +87,64 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/poppins_extrabold"
-            android:text="@string/catatan"
+            android:text="@string/jk_anak"
             android:textSize="16sp" />
 
-
         <TextView
-            android:id="@+id/lihat_catatan"
+            android:id="@+id/edit_jkAnak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
+            android:hint="@string/up_jk_anak"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:text="@string/bb_anak"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/edit_bbAnak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:hint="@string/up_bb_anak"
+            android:inputType="number"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_extrabold"
+            android:text="@string/tb_anak"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/edit_tbAnak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:hint="@string/up_tb_anak"
+            android:inputType="number"
             android:textSize="16sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button_simpan"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/button_edit"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/pale_green"
-                android:fontFamily="@font/poppins_extrabold"
-                android:layout_marginStart="70dp"
-                android:text="@string/button_edit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/button_hapus"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/red"
-                android:fontFamily="@font/poppins_extrabold"
-                android:layout_marginEnd="70dp"
-                android:text="@string/button_hapus"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-
-
-
+        android:fontFamily="@font/poppins_extrabold"
+        android:text="@string/button_simpan"
+        android:backgroundTint="@color/light_pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

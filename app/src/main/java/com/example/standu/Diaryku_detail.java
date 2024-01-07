@@ -19,7 +19,6 @@ public class Diaryku_detail extends AppCompatActivity {
     private Button button_edit, button_hapus;
     private ImageButton button_back;
     private DatabaseReference diaryRef;
-    private String diaryId;
 
 
     @Override
@@ -36,7 +35,7 @@ public class Diaryku_detail extends AppCompatActivity {
         contentLihat = findViewById(R.id.lihat_catatan);
         dateLihat = findViewById(R.id.lihat_tanggal);
 
-        diaryId = getIntent().getStringExtra("diaryId");
+        String diaryId = getIntent().getStringExtra("diaryId");
         String title = getIntent().getStringExtra("title");
         String content = getIntent().getStringExtra("content");
         String date = getIntent().getStringExtra("date");
@@ -73,7 +72,6 @@ public class Diaryku_detail extends AppCompatActivity {
         builder.setPositiveButton("Hapus", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Hapus data dari database
                 diaryRef.removeValue();
                 Toast.makeText(Diaryku_detail.this, "Catatan dihapus", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Diaryku_detail.this, Diaryku.class));
@@ -83,7 +81,6 @@ public class Diaryku_detail extends AppCompatActivity {
         builder.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Batal menghapus, tutup dialog
                 dialog.dismiss();
             }
         });

@@ -21,6 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.ValueEventListener;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 
 
 
@@ -48,65 +52,70 @@ public class Daftar extends AppCompatActivity {
         redirect_masuk = findViewById(R.id.link_masuk);
 
         button_daftar.setOnClickListener(view -> {
-            database = FirebaseDatabase.getInstance();
-            reference = database.getReference("users");
+           if (isInternetAvailable()){
+               database = FirebaseDatabase.getInstance();
+               reference = database.getReference("users");
 
-            String nama = nama_lengkapDaftar.getText().toString().trim();
-            String user = usernameDaftar.getText().toString().trim();
-            String mail = emailDaftar.getText().toString().trim();
-            String pass = passwordDaftar.getText().toString().trim();
+               String nama = nama_lengkapDaftar.getText().toString().trim();
+               String user = usernameDaftar.getText().toString().trim();
+               String mail = emailDaftar.getText().toString().trim();
+               String pass = passwordDaftar.getText().toString().trim();
 
-            if(nama.isEmpty()){
-                nama_lengkapDaftar.setError("Nama Lengkap tidak boleh kosong");
-            }
-            if(user.isEmpty()){
-                usernameDaftar.setError("Username tidak boleh kosong");
-            }
-            if(mail.isEmpty()){
-                emailDaftar.setError("Email tidak boleh kosong");
-            }
-            if(pass.isEmpty()){
-                passwordDaftar.setError("Password tidak boleh kosong");
-            }
-            if(pass.length() < 6){
-                passwordDaftar.setError("Password harus 6 karakter atau lebih");
-            }else {
-                // Cek ke database apakah username sudah ada atau belum
-                reference.orderByChild("username").equalTo(user).addListenerForSingleValueEvent(new ValueEventListener() {
+               if(nama.isEmpty()){
+                   nama_lengkapDaftar.setError("Nama Lengkap tidak boleh kosong");
+               }
+               if(user.isEmpty()){
+                   usernameDaftar.setError("Username tidak boleh kosong");
+               }
+               if(mail.isEmpty()){
+                   emailDaftar.setError("Email tidak boleh kosong");
+               }
+               if(pass.isEmpty()){
+                   passwordDaftar.setError("Password tidak boleh kosong");
+               }
+               if(pass.length() < 6){
+                   passwordDaftar.setError("Password harus 6 karakter atau lebih");
+               }else {
+                   reference.orderByChild("username").equalTo(user).addListenerForSingleValueEvent(new ValueEventListener() {
 
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            // Jika username sudah ada, berikan pesan kesalahan
-                            Toast.makeText(Daftar.this, "Username sudah digunakan", Toast.LENGTH_SHORT).show();
-                        } else {
-                            // Jika username belum ada dan email valid, lanjutkan proses pendaftaran
-                            auth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()){
-                                        String uid = auth.getCurrentUser().getUid();
-                                        User_data userData = new User_data(uid, nama, user, mail, pass);
-                                        reference.child(user).setValue(userData);
-                                        Toast.makeText(Daftar.this, "Pendaftaran Akun Berhasil", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Daftar.this, Masuk.class));
-                                    }else{
-                                        Toast.makeText(Daftar.this, "Pendaftaran Akun Gagal\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        }
-                    }
+                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                           if (dataSnapshot.exists()) {
+                               Toast.makeText(Daftar.this, "Username sudah digunakan", Toast.LENGTH_SHORT).show();
+                           } else {
+                               auth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                   @Override
+                                   public void onComplete(@NonNull Task<AuthResult> task) {
+                                       if(task.isSuccessful()){
+                                           String uid = auth.getCurrentUser().getUid();
+                                           User_data userData = new User_data(uid, nama, user, mail, pass);
+                                           reference.child(user).setValue(userData);
+                                           Toast.makeText(Daftar.this, "Pendaftaran Akun Berhasil", Toast.LENGTH_SHORT).show();
+                                           startActivity(new Intent(Daftar.this, Masuk.class));
+                                       }else{
+                                           Toast.makeText(Daftar.this, "Pendaftaran Akun Gagal\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                       }
+                                   }
+                               });
+                           }
+                       }
 
 
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // Handle error
-                    }
-                });
+                       public void onCancelled(@NonNull DatabaseError databaseError) {
+                       }
+                   });
 
-            }
+               }
+           }else{
+               Toast.makeText(Daftar.this, "Tidak ada koneksi internet. Silahkan cek koneksi Anda", Toast.LENGTH_SHORT).show();
+           }
         });
-
         redirect_masuk.setOnClickListener(view ->
                 startActivity(new Intent(Daftar.this, Masuk.class)));
+    }
+
+    private boolean isInternetAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

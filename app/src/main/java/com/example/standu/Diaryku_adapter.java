@@ -72,14 +72,13 @@ public class Diaryku_adapter extends RecyclerView.Adapter<Diaryku_adapter.Diaryk
         context.startActivity(intent);
     }
 
-    // Helper methods to get title, content, and date by diaryId
     private String getTitleByDiaryId(String diaryId) {
         for (Diaryku_model diary : diaries) {
             if (diary.getDiaryId().equals(diaryId)) {
                 return diary.getTitle();
             }
         }
-        return ""; // or null, depending on your preference
+        return "";
     }
 
     private String getContentByDiaryId(String diaryId) {
@@ -88,7 +87,7 @@ public class Diaryku_adapter extends RecyclerView.Adapter<Diaryku_adapter.Diaryk
                 return diary.getContent();
             }
         }
-        return ""; // or null, depending on your preference
+        return "";
     }
 
     private String getDateByDiaryId(String diaryId) {
@@ -97,7 +96,7 @@ public class Diaryku_adapter extends RecyclerView.Adapter<Diaryku_adapter.Diaryk
                 return diary.getDate();
             }
         }
-        return ""; // or null, depending on your preference
+        return "";
     }
 
 }

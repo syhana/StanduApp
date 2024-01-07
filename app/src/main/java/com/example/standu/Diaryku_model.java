@@ -6,7 +6,6 @@ public class Diaryku_model {
     private String content;
     private String date;
 
-    // Diperlukan konstruktor kosong untuk Firebase
     public Diaryku_model() {
     }
 

@@ -62,14 +62,12 @@ public class Diaryku_edit extends AppCompatActivity {
                 .child(SessionManager.getUserDetails(this).userId)
                 .child(date).child(diaryId);
 
-        // Mengambil data dari Firebase Realtime Database berdasarkan diaryId
         diaryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     Diaryku_model diary = snapshot.getValue(Diaryku_model.class);
                     if (diary != null) {
-                        // Menampilkan data yang ada di Firebase pada EditText
                         editTitle.setText(diary.getTitle());
                         editContent.setText(diary.getContent());
                         editDate.setText(diary.getDate());
@@ -99,11 +97,9 @@ public class Diaryku_edit extends AppCompatActivity {
             return;
         }
 
-        // Update data diary ke Firebase Realtime Database
         Diaryku_model updatedDiary = new Diaryku_model(diaryId, title, content, date);
         diaryRef.setValue(updatedDiary);
 
-        // Setelah menyimpan, baca data yang baru saja disimpan
         diaryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -111,7 +107,6 @@ public class Diaryku_edit extends AppCompatActivity {
                     Diaryku_model updatedDiary = snapshot.getValue(Diaryku_model.class);
 
                     if (updatedDiary != null) {
-                        // Navigasi ke Diaryku_detail dengan data yang baru
                         Intent intent = new Intent(Diaryku_edit.this, Diaryku_detail.class);
                         intent.putExtra("diaryId", updatedDiary.getDiaryId());
                         intent.putExtra("title", updatedDiary.getTitle());
@@ -125,7 +120,6 @@ public class Diaryku_edit extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error
             }
         });
     }

@@ -55,7 +55,6 @@ public class Diaryku extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view_diary);
         diaryList = new ArrayList<>();
 
-        // Mengambil data dari Firebase Realtime Database
         diaryRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -74,7 +73,6 @@ public class Diaryku extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                // Handle error
             }
         });
 
@@ -112,7 +110,6 @@ public class Diaryku extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error
             }
         });
     }
