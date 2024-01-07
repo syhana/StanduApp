@@ -19,6 +19,12 @@
         android:theme="@style/Theme.Standu"
         tools:targetApi="31">
         <activity
+            android:name=".Pengaturan_password"
+            android:exported="false" />
+        <activity
+            android:name=".Pengaturan"
+            android:exported="false" />
+        <activity
             android:name=".ImunisasiAnak_tambah"
             android:exported="false" />
         <activity

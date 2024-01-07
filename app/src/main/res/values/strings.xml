@@ -87,8 +87,13 @@
     <string name="up_nama_imunisasi">Masukkan nama imunisasi</string>
 
 
-
     <string name="judul_edit_diaryku">EDIT DIARYKU</string>
     <string name="selengkapnya">selengkapnya</string>
+    <string name="atau">Atau</string>
+    <string name="ubah_password">Ubah Password?</string>
+    <string name="judul_ubah_password">UBAH PASSWORD</string>
+    <string name="up_password_lama">Masukkan password lama</string>
+    <string name="up_password_baru">Masukkan password baru</string>
+    <string name="ubah">Ubah</string>
 
 </resources>
