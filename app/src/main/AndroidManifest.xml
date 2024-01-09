@@ -19,6 +19,27 @@
         android:theme="@style/Theme.Standu"
         tools:targetApi="31">
         <activity
+            android:name=".Sharingku_edit"
+            android:exported="false" />
+        <activity
+            android:name=".Sharingku_detail"
+            android:exported="false" />
+        <activity
+            android:name=".Sharingku_tambah"
+            android:exported="false" />
+        <activity
+            android:name=".Sharingku"
+            android:exported="false" />
+        <activity
+            android:name=".Sharing"
+            android:exported="false" />
+        <activity
+            android:name=".Nutrisi_detail"
+            android:exported="false" />
+        <activity
+            android:name=".Nutrisi"
+            android:exported="false" />
+        <activity
             android:name=".Pengaturan_password"
             android:exported="false" />
         <activity

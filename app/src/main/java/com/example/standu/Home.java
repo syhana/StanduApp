@@ -22,11 +22,23 @@ public class Home extends AppCompatActivity {
 
 
         menu1_diary = findViewById(R.id.menu1);
+        menu2_informasi = findViewById(R.id.menu2);
+        menu3_nutrisi = findViewById(R.id.menu3);
         menu4_imunisasi = findViewById(R.id.menu4);
         menu5_pengaturan = findViewById(R.id.menu5);
 
         menu1_diary.setOnClickListener(v -> {
             Intent intent = new Intent(Home.this, Diaryku.class);
+            startActivity(intent);
+        });
+
+        menu2_informasi.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, Sharing.class);
+            startActivity(intent);
+        });
+
+        menu3_nutrisi.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, Nutrisi.class);
             startActivity(intent);
         });
 

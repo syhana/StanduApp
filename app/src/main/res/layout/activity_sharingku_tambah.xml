@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Imunisasi_edit">
+    tools:context=".Sharingku_tambah">
 
     <TableRow
         android:id="@+id/sharingku"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/light_pink"
+        android:background="@color/light_purple"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,21 +19,21 @@
         <TextView
             android:fontFamily="@font/poppins_extrabold"
             android:gravity="center"
-            android:text="@string/judul_imunisasi_edit"
+            android:text="@string/judul_tambah_sharingku"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp" />
     </TableRow>
 
     <ImageButton
-        android:id="@+id/button_back_pink"
+        android:id="@+id/button_back_purple"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#FBFBFB"
         android:contentDescription="@string/button_back"
-        android:src="@drawable/back_pink"
+        android:src="@drawable/back_purple"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sharingku" />
 
@@ -47,21 +47,31 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_back_pink">
+        app:layout_constraintTop_toBottomOf="@+id/button_back_purple">
+
+
+        <ImageButton
+            android:id="@+id/tambah_gambar"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center"
+            android:contentDescription="@string/upload_gambar"
+            android:src="@drawable/baseline_add_photo"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_extrabold"
-            android:text="@string/nama_anak"
+            android:text="@string/judul_sharing"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/edit_namaAnak"
+        <EditText
+            android:id="@+id/tambah_judulSharingku"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:hint="@string/up_nama_anak"
+            android:hint="@string/up_judul_sharing"
             android:textSize="16sp" />
 
         <TextView
@@ -69,69 +79,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/poppins_extrabold"
-            android:text="@string/umur_anak"
+            android:text="@string/pengalaman_sharing"
             android:textSize="16sp" />
 
 
         <EditText
-            android:id="@+id/edit_umurAnak"
+            android:id="@+id/tambah_ceritaSharingku"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:fontFamily="@font/poppins"
-            android:hint="@string/up_umur_anak"
-            android:inputType="numberDecimal"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_extrabold"
-            android:text="@string/jk_anak"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/edit_jkAnak"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:hint="@string/up_jk_anak"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_extrabold"
-            android:text="@string/bb_anak"
-            android:textSize="16sp" />
-
-
-        <EditText
-            android:id="@+id/edit_bbAnak"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:hint="@string/up_bb_anak"
-            android:inputType="number"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/poppins_extrabold"
-            android:text="@string/tb_anak"
-            android:textSize="16sp" />
-
-
-        <EditText
-            android:id="@+id/edit_tbAnak"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:hint="@string/up_tb_anak"
-            android:inputType="number"
+            android:hint="@string/up_pengalaman_sharing"
+            android:inputType="textMultiLine"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -142,9 +101,8 @@
         android:layout_marginTop="50dp"
         android:fontFamily="@font/poppins_extrabold"
         android:text="@string/button_simpan"
-        android:backgroundTint="@color/light_pink"
+        android:backgroundTint="@color/light_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

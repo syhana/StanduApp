@@ -95,5 +95,28 @@
     <string name="up_password_lama">Masukkan password lama</string>
     <string name="up_password_baru">Masukkan password baru</string>
     <string name="ubah">Ubah</string>
+    <string name="judul_sharing_stunting">SHARING STUNTING</string>
+    <string name="button_buka_sharingku">Buka Sharingku</string>
+    <string name="judul_sharingku">SHARINGKU</string>
+    <string name="judul_tambah_sharingku">TAMBAH SHARINGKU</string>
+    <string name="judul_sharing">Judul Sharing</string>
+    <string name="up_judul_sharing">Masukkan judul sharing</string>
+    <string name="pengalaman_sharing">Pengalaman/Sharing</string>
+    <string name="up_pengalaman_sharing">Masukkan cerita Anda</string>
+    <string name="upload_gambar">Upload gambar</string>
+    <string name="judul_nutrisi">NUTRISI ANAK</string>
+    <string name="nutrisi_name">Nutrisi Name</string>
+    <string name="nutrisi_description">Description</string>
+    <string name="nama_nutrisi">Nama Nutrisi</string>
+    <string name="detail_nutrisi">Detail Nutrisi</string>
+    <string name="kandungan_vitamin">Kandungan Vitamin</string>
+    <string name="resep_mpasi">Resep MPASI</string>
+    <string name="sharing_judul">Judul Sharing</string>
+    <string name="judul_detail_sharing">DETAIL SHARING</string>
+    <string name="cerita_sharing">Cerita Sharing</string>
+    <string name="edit_sharingku">EDIT SHARINGKU</string>
+    <string name="bahan_mpasi">Bahan MPASI</string>
+    <string name="bahan">Bahan</string>
+    <string name="cara_membuat">Cara Membuat</string>
 
 </resources>

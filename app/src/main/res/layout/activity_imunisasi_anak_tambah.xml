@@ -7,7 +7,7 @@
     tools:context=".ImunisasiAnak_tambah">
 
     <TableRow
-        android:id="@+id/imunisasi"
+        android:id="@+id/sharingku"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/light_pink"
@@ -35,7 +35,7 @@
         android:contentDescription="@string/button_back"
         android:src="@drawable/back_pink"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imunisasi" />
+        app:layout_constraintTop_toBottomOf="@+id/sharingku" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
