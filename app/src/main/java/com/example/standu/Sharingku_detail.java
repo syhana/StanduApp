@@ -47,7 +47,7 @@ public class Sharingku_detail extends AppCompatActivity {
         String cerita = getIntent().getStringExtra("cerita");
         String image = getIntent().getStringExtra("image");
 
-        button_back.setOnClickListener(view -> onBackPressed());
+        button_back.setOnClickListener(view -> startActivity(new Intent(Sharingku_detail.this, Sharingku.class)));
         button_hapus.setOnClickListener(view -> showDeleteConfirmation());
         button_edit.setOnClickListener(view -> openSharingEdit(sharingId, judul, cerita, image));
 
