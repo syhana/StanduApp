@@ -33,17 +33,20 @@ import com.google.firebase.storage.UploadTask;
 
 public class Sharingku_tambah extends AppCompatActivity {
 
-    ImageButton button_back, uploadImage;
-    Button button_simpan;
-    EditText judulSharingTambah, ceritaSharingTambah;
-    String imageURL;
-    Uri uri;
-    DatabaseReference sharingRef;
+    private ImageButton button_back, uploadImage;
+    private Button button_simpan;
+    private EditText judulSharingTambah, ceritaSharingTambah;
+    private String imageURL;
+    private Uri uri;
+    private DatabaseReference sharingRef;
+    private NotificationHelper notificationHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sharingku_tambah);
+
+        notificationHelper = new NotificationHelper();
 
         String uid = SessionManager.getUserDetails(this).userId;
         sharingRef = FirebaseDatabase.getInstance().getReference("sharing").child(uid);
@@ -120,6 +123,7 @@ public class Sharingku_tambah extends AppCompatActivity {
                     sharingRef.child(sharingId).setValue(sharing);
 
                     Toast.makeText(Sharingku_tambah.this, "Sharing berhasil disimpan", Toast.LENGTH_SHORT).show();
+                    showNotification("Ada sharing terbaru loh!", "jangan ketinggalan moms");
                     finish();
                 }
             }
@@ -129,5 +133,8 @@ public class Sharingku_tambah extends AppCompatActivity {
 
             }
         });
+    }
+    private void showNotification(String title, String message) {
+        notificationHelper.showNotification(this, title, message);
     }
 }
