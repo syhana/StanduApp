@@ -2,6 +2,7 @@ package com.example.standu;
 
 import android.content.Context;
 import android.content.Intent;
+import android.service.carrier.CarrierMessagingService;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,10 +48,25 @@ public class Sharingku_adapter extends RecyclerView.Adapter<Sharingku_adapter.Sh
         holder.judulSharing.setText(sharing.getJudul());
         holder.ceritaSharing.setText(sharing.getCerita());
 
-        holder.itemView.setOnClickListener(view ->
-                openSharingDetails(sharing.getSharingId())
-        );
+        holder.itemView.setOnClickListener(view -> {
+            String loggedInUserId = SessionManager.getUserDetails(context).userId;
+            if(loggedInUserId.equals((sharing.getUserId()))){
+                openSharingDetails(sharing.getSharingId());
+            }else{
+                openSharingDetailsOrang(sharing.getSharingId());
+            }
 
+        });
+
+    }
+
+    private void openSharingDetailsOrang(String sharingId) {
+        Intent intent = new Intent(context, Sharing_detail.class);
+        intent.putExtra("sharingId", sharingId);
+        intent.putExtra("judul", getTitleBySharingId(sharingId));
+        intent.putExtra("cerita", getContentBySharingId(sharingId));
+        intent.putExtra("image", getDateBySharingId(sharingId));
+        context.startActivity(intent);
     }
 
     @Override

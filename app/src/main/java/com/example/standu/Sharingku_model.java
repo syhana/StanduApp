@@ -5,12 +5,14 @@ public class Sharingku_model {
     private String judul;
     private String cerita;
     private String img;
+    private String userId;
 
-    public Sharingku_model(String sharingId, String judulSharing, String cerita, String img) {
+    public Sharingku_model(String sharingId, String judulSharing, String cerita, String img, String userId) {
         this.sharingId = sharingId;
         this.judul = judulSharing;
         this.cerita = cerita;
         this.img = img;
+        this.userId = userId;
     }
 
     public Sharingku_model() {
@@ -46,5 +48,13 @@ public class Sharingku_model {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

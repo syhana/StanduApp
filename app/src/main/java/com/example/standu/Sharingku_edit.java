@@ -69,7 +69,8 @@ public class Sharingku_edit extends AppCompatActivity {
         String judul = editJudul.getText().toString().trim();
         String cerita = editCerita.getText().toString().trim();
 
-        Sharingku_model updatedSharing = new Sharingku_model(sharingId, judul, cerita, imageUrl);
+        String userId = SessionManager.getUserDetails(this).userId;
+        Sharingku_model updatedSharing = new Sharingku_model(sharingId, judul, cerita, imageUrl, userId);
         sharingRef.setValue(updatedSharing);
 
         sharingRef.addListenerForSingleValueEvent(new ValueEventListener() {

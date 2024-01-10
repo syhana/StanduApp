@@ -115,7 +115,8 @@ public class Sharingku_tambah extends AppCompatActivity {
                     Toast.makeText(Sharingku_tambah.this, "Judul sudah ada", Toast.LENGTH_SHORT).show();
                 }else{
                     String sharingId = sharingRef.push().getKey();
-                    Sharingku_model sharing = new Sharingku_model(sharingId, judul, cerita, imageURL);
+                    String userId = SessionManager.getUserDetails(Sharingku_tambah.this).userId;
+                    Sharingku_model sharing = new Sharingku_model(sharingId, judul, cerita, imageURL, userId);
                     sharingRef.child(sharingId).setValue(sharing);
 
                     Toast.makeText(Sharingku_tambah.this, "Sharing berhasil disimpan", Toast.LENGTH_SHORT).show();

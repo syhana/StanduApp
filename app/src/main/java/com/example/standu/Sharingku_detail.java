@@ -24,11 +24,11 @@ import com.google.firebase.storage.StorageReference;
 
 public class Sharingku_detail extends AppCompatActivity {
 
-    TextView judulLihat, ceritaLihat;
-    ImageView imageLihat;
-    ImageButton button_back;
-    Button button_edit, button_hapus;
-    DatabaseReference sharingRef;
+    private TextView judulLihat, ceritaLihat;
+    private ImageView imageLihat;
+    private ImageButton button_back;
+    private Button button_edit, button_hapus;
+    private DatabaseReference sharingRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
